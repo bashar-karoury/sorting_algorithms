@@ -1,1 +1,1 @@
-# sorting_algorithms
+Repo for implementation of sorting alogorithms
