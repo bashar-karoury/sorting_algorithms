@@ -27,7 +27,6 @@ void selection_sort(int *array, size_t size)
 		}
 		if (no_min)
 		{
-			break;
 		}
 			/*swap two elements*/
 			temp = array[i];
