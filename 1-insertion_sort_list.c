@@ -9,12 +9,13 @@ void swap_with_prev(listint_t *node);
 void insertion_sort_list(listint_t **list)
 {
 	/*start with second node of list*/
-	listint_t *trav_node = (*list)->next;
+	listint_t *trav_node = NULL;
 	listint_t *temp_node = NULL;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
+	trav_node = (*list)->next;
 	while (trav_node != NULL)
 	{
 		temp_node = trav_node->next;
