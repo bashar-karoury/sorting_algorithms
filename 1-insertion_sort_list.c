@@ -1,6 +1,5 @@
 #include "sort.h"
 #include <stdlib.h>
-#include <stdio.h>
 void swap_with_prev(listint_t *node);
 /**
 * insertion_sort_list - sorts a doubly linked list of integers in
