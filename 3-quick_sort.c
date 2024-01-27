@@ -15,7 +15,6 @@ void quick_sort(int *array, size_t size)
 		return;
 
 	sort_partition(array, 0, (int)(size - 1), (int)size);
-	
 }
 
 /**
@@ -31,32 +30,36 @@ void sort_partition(int *array, int start, int end, int size)
 	int pivot = array[end];
 	int left = start;
 	int right = end - 1;
+	int found = 0;
+
 	if (start >= end)
 		return;
-	while (right > left)
+	for (left = start; left < end && left <= right; left++)
 	{
-		while (array[right] > pivot && right > left)
-			right--;
-		while (array[left] < pivot && right > left)
-			left++;
-		if (right != left)
+		if (array[left] > pivot)
 		{
-			swap(&(array[right]), &(array[left]));
-			print_array(array, size);
+			found = 1;
+			/*find smallest from right*/
+			while (array[right] > pivot && right > left)
+				right--;
+			if (left != right)
+			{
+				swap(&(array[left]), &(array[right]));
+				print_array(array, size);
+			}
 		}
+
 	}
-	if ((array[end] < array[left]) && (end != left))
-	{	
-		swap(&(array[left]), &(array[end]));
+	if (left < end || found)
+	{
+		swap(&(array[right]), &(array[end]));
 		print_array(array, size);
 	}
-	printf("left at %d = %d\n", left, array[left]);
-	printf("right at %d = %d\n", right, array[right]);
-	printf("[%d --- %d ]\n", array[start], array[left - 1]);
-	sort_partition(array, start, left - 1, size);
-	
-	printf("[%d --- %d ]\n", array[left + 1], array[end]);
-	sort_partition(array, left + 1, end, size);
+	else
+		right = end;
+
+	sort_partition(array, start, right - 1, size);
+	sort_partition(array, right + 1, end, size);
 }
 
 /**
